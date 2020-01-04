@@ -17,6 +17,9 @@ Shorthand of ~database~.
 ** date
 The entry date ~dqs~ should use, in ~YYYYMMDD~ format. Defaults to the current date.
 
+** d
+Shorthand of ~date~.
+
 * Commands
 If no command is specified, ~dqs~ prints the entry for the date in use.
 
@@ -74,7 +77,7 @@ dqs user diet vegan
 * Interpreting the Output
 A full portion is marked with a full-color background.
 
-A half-portion colors the portion, but not the background.
+A half-portion colors the portion's points, but not the background.
 
 Green is used to mark portions with positive points, yellow for zero points, red for negative points.
 
