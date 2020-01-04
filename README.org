@@ -1,0 +1,104 @@
+~dqs~ is an unofficial CLI implementation of Matt Fitzgerald's [[http://www.racingweight.com/index.html][Diet Quality Score]] system.
+
+There are official apps available for [[https://play.google.com/store/apps/details?id=com.racingweight.dqs_mobile][Android]] and [[https://apps.apple.com/us/app/dqs-mobile/id906923731][iOS]].
+
+This CLI is optimized for fast keyboard input and visual feedback in a terminal.
+
+[[file:docs/screenshot.jpg]]
+
+* Flags
+
+** database
+The location of the ~dqs~ database file. Defaults to ~$HOME/.config/dqs/dqs.db~.
+
+** db
+Shorthand of ~database~.
+
+** date
+The entry date ~dqs~ should use, in ~YYYYMMDD~ format. Defaults to the current date.
+
+* Commands
+If no command is specified, ~dqs~ prints the entry for the date in use.
+
+** add
+Add portions to an entry.
+
+Multiple food types may be specified at the same time.
+
+Either the full category name, the lowercased name, or its abbreviation may be used.
+
+Portions must be a multiple of ~0.5~; a half-portion can be set as ~0.5~ or ~.5~.
+
+#+begin_src
+dqs add "Whole Grains" 1 dairy 2 nsh .5 f 1.5
+#+end_src
+
+** entry
+Modify an entry.
+
+*** delete
+Deletes the entry for the date in use (the current date, unless set otherwise with the ~date~ flag).
+
+#+begin_src
+dqs -date 20161108 entry delete
+#+end_src
+
+*** note
+Adds a note to the entry.
+
+#+begin_src
+dqs entry note "BAMCIS"
+#+end_src
+
+** remove
+Removes portions from an entry; the opposite of add.
+
+#+begin_src
+dqs remove "Fried Foods" 0.5 sweets 1 o 2
+#+end_src
+
+** user
+Modify a user.
+
+*** diet
+Set the user's diet; the following diets are supported:
+
+- ~omnivore~
+- ~vegan~
+- ~vegetarian~
+
+#+begin_src
+dqs user diet vegan
+#+end_src
+
+* Interpreting the Output
+A full portion is marked with a full-color background.
+
+A half-portion colors the portion, but not the background.
+
+Green is used to mark portions with positive points, yellow for zero points, red for negative points.
+
+The total DQS is printed below the portion table output.
+
+* Abbreviations
+The following category name abbreviations may be used to add and remove portions.
+
+|------------------------------+--------------|
+| Full Name                    | Abbreviation |
+|------------------------------+--------------|
+| Dairy                        | d            |
+| Fried Foods                  | ff           |
+| Fruit                        | f            |
+| High Quality Beverages       | hqb          |
+| High Quality Processed Foods | hqpf         |
+| Legumes & Plant Proteins     | lpp          |
+| Low Quality Beverages        | lqb          |
+| Nuts, Seeds, Healthy Oils    | nsh          |
+| Other                        | o            |
+| Processed Meat               | p            |
+| Refined Grains               | rg           |
+| Sweets                       | s            |
+| Unprocessed Meat & Seafood   | ums          |
+| Vegetables                   | v            |
+| Whole Grains                 | wg           |
+|------------------------------+--------------|
