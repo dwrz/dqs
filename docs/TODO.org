@@ -1,0 +1,30 @@
+* BMI
+- Calculate the user's BMI.
+
+* Configuration & Customization
+- Configuration file to store db location (supplement to flag).
+- Colors.
+- Total score feedback color ranges.
+
+* Formatting
+- Add uncolorized output for copy-paste.
+  - Use symbols to mark full and half portions.
+- Clarify padding logic.
+- Handle small terminals.
+
+* Export and Import
+- JSON
+- CSV
+- Alternatively, consider a plain-text JSON store.
+
+* Statistics
+- Report statistics on weight, average DQS.
+  - Identify and advise on commonly unclaimed points.
+
+* User Configuration
+- Allow the user to set personal data fields.
+  - Birthday, Diet, Gender, Height, Name, Target DQS, Target Weight
+
+* Weight
+- Update the entry's weight field.
+  - If the entry is the present day, also update the user's weight.
